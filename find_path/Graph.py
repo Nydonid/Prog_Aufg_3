@@ -18,7 +18,8 @@ class Graph:
         from_node.addSingleEdge(Edge.Edge(to_node, cost, line)) # Add edges to both directions, as it is bidirectional
         to_node.addSingleEdge(Edge.Edge(from_node, cost, line))
 
-        print(from_node, to_node)
+        # print("new EDGE direction 1: \n" + " " + str(from_node) + "\n" + " " + str(to_node))
+        # print("new EDGE direction 2: \n" + " " + str(to_node) + "\n" + " " + str(from_node))
 
     def __repr__(self) -> str:
         return f"Graph({len(self.nodes)} stations)"

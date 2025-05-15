@@ -7,4 +7,4 @@ class Edge:
         self.line = line
 
     def __repr__(self):
-        return f"Edge(to={self.to_node.name}, cost={self.cost}, line='{self.line}')"
+        return f"Edge(to={self.toNode.name}, cost={self.cost}, line='{self.line}')"

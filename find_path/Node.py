@@ -9,4 +9,4 @@ class Node:
       self.edges.append(edge)
 
     def __repr__(self):
-        return f"Node(name='{self.name}', edges={len(self.edges)})"
+        return f"Node(name='{self.name}', edges={str(self.edges)})"

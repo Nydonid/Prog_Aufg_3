@@ -16,15 +16,15 @@ def readGraphFromFile(filename: str) -> Graph:
                 print(f"Invalid line format: {line}")
                 continue
 
-            tokens = re.findall(r'"([^"]+)"\s*(\d+)', data)  # Extract all station names and numbers
+            dataFrameTokens = re.findall(r'"([^"]+)"\s*(\d+)?', data)  # Extract all station names and numbers
+            tokens = [item for pair in dataFrameTokens for item in pair] # Used to remove brackets
 
             i = 0
-            while i < len(tokens) - 2:
+            while i +2 < len(tokens):
                 fromStation = tokens[i]
 
                 try:
-                    # cost = int(tokens[i + 1])
-                    cost = 2
+                    cost = int(tokens[i + 1])
                 except ValueError:
                     break
 
