@@ -1,7 +1,5 @@
-import Node
-
 class Edge:
-    def __init__(self, toNode: Node, cost: int, line: str):
+    def __init__(self, toNode: "Node", cost: int, line: str):
         self.toNode = toNode
         self.cost = cost
         self.line = line

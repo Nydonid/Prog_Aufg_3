@@ -1,4 +1,6 @@
+Edge.py
 Graph.py
+Node.py
 main.py
 setup.py
 find_path.egg-info/PKG-INFO
