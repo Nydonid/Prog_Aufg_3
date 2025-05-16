@@ -19,15 +19,13 @@ def main():
         filename = sys.argv[1]
         graph = readGraphFromFile(filename)
         start = sys.argv[2]
-        ziel = sys.argv[2]
+        ziel = sys.argv[3]
+        findPath(graph, start, ziel)
 
     else:
         # usage‑hinweis wie Programm richtig bedient wird.
         print("ATTENTION, correct usage: find_path <filename_graph.txt> [start] [ziel]")
         sys.exit(1)
-
-    print(graph)
-    print(start, ziel)
 
 
 def readGraphFromFile(filename: str) -> Graph:
@@ -62,6 +60,36 @@ def readGraphFromFile(filename: str) -> Graph:
                 i += 2  # Move to the next token/ "station-cost" pair
 
     return graph
+
+
+def findPath(graph: Graph, start: str, ziel: str):
+    int # TODO
+    MinWeg(Node
+    i, Node
+    j) {
+        int
+    minweg = 0;
+    do
+    {
+        visited[i] = TRUE; // Knoten
+    markieren
+    for each(neighbour m of i){
+    if ( not visited[m]) {
+    // Nachbarknoten in Heap einordnen
+    Heap.put(m, m.gewicht + minweg);
+    }
+    }
+    do {
+    // Knoten mit minimalem Gewicht aus
+    // Heap entfernen, minweg aktualisieren
+    i = Heap.get();
+    minweg = i.gewicht;
+    }
+    while (visited[i]);
+    } while (i != j); // Solange Zielknoten nicht erreicht
+    return minweg;
+    }
+
 
 
 if __name__ == '__main__':
