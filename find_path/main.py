@@ -3,6 +3,7 @@ import sys
 import re
 import os
 from Graph import Graph
+from Node import Node
 
 # Press Umschalt+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -20,7 +21,7 @@ def main():
         graph = readGraphFromFile(filename)
         start = sys.argv[2]
         ziel = sys.argv[3]
-        findPath(graph, start, ziel)
+        findPathDijkstra(graph, start, ziel)
 
     else:
         # usage‑hinweis wie Programm richtig bedient wird.
@@ -62,34 +63,47 @@ def readGraphFromFile(filename: str) -> Graph:
     return graph
 
 
-def findPath(graph: Graph, start: str, ziel: str):
-    int # TODO
-    MinWeg(Node
-    i, Node
-    j) {
-        int
-    minweg = 0;
-    do
-    {
-        visited[i] = TRUE; // Knoten
-    markieren
-    for each(neighbour m of i){
-    if ( not visited[m]) {
-    // Nachbarknoten in Heap einordnen
-    Heap.put(m, m.gewicht + minweg);
-    }
-    }
-    do {
-    // Knoten mit minimalem Gewicht aus
-    // Heap entfernen, minweg aktualisieren
-    i = Heap.get();
-    minweg = i.gewicht;
-    }
-    while (visited[i]);
-    } while (i != j); // Solange Zielknoten nicht erreicht
-    return minweg;
-    }
+def findPathDijkstra(graph: Graph, start: str, destination: str):
+    if start not in graph.nodes or destination not in graph.nodes:
+        print(f"Invalid start or destination node")
+        return
 
+    visited = {}
+    distances = {}
+    possibleHub = []
+    usedStations = []
+    shortestDistanceFromCurrent = 0
+
+    for node in graph.nodes:
+        distances[node] = float('inf')
+
+    distances[start] = 0
+    currentNode = start
+
+    while currentNode != destination:
+        visited[currentNode] = True
+
+        if len(graph.nodes[currentNode].getNeighbors()) >= 3:
+            possibleHub.append(currentNode)
+
+        for neighbourNode in graph.nodes[currentNode].getNeighbors():
+            if neighbourNode not in visited:
+                shortestDistanceFromCurrent = distances[currentNode] + graph.nodes[currentNode].distance(neighbourNode)
+                if shortestDistanceFromCurrent < distances[neighbourNode]:
+                    distances[neighbourNode] = shortestDistanceFromCurrent
+
+        minDistance = float('inf')
+        nextNode = None
+
+        for node in graph.nodes:
+            if node not in visited and distances[node] < minDistance:
+                minDistance = distances[node]
+                nextNode = node
+
+        currentNode = nextNode
+
+    print(usedStations)
+    # print(f"Edges which are beeing passed: {distances}")
 
 
 if __name__ == '__main__':
